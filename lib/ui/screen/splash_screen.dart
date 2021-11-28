@@ -1,8 +1,24 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../../shared/theme.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({ Key? key }) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  
+  @override
+  void initState() {
+    Timer(const Duration(seconds: 3), () => {
+      Navigator.pushNamed(context, '/get-started')
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
