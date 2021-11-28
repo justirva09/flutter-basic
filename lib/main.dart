@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/ui/screen/bonus_screen.dart';
 import 'package:my_app/ui/screen/get_started_screen.dart';
+import 'package:my_app/ui/screen/sign_up_screen.dart';
 import 'package:my_app/ui/screen/splash_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({ Key? key }) : super(key: key);
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/get-started': (context) => const GetStartedScreen(),
+        '/sign-up': (context) => const SignUpScreen(),
+        '/bonus': (context) => const BonuScreen()
       },
     );
   }
