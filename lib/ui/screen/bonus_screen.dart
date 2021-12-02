@@ -26,6 +26,7 @@ class BonuScreen extends StatelessWidget {
           ]
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -59,10 +60,92 @@ class BonuScreen extends StatelessWidget {
                       image: AssetImage('assets/icon_plane.png')
                     )
                   ),
-                )
+                ),
+                Text(
+                  'Pay',
+                  style: whiteTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: medium
+                  )
+                ),
               ],
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 41),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Balance',
+                    style: whiteTextStyle.copyWith(
+                      fontWeight: light                    
+                    ),
+                  ),
+                  Text(
+                    'IDR 280.000.000',
+                    style: whiteTextStyle.copyWith(
+                      fontSize: 26,
+                      fontWeight: medium
+                    ),
+                  )
+                ],
+              )
             )
           ],
+        ),
+      );
+    }
+
+    Widget title() {
+      return Container(
+        margin: const EdgeInsets.only(top: 80),
+        child: Column(
+          children: [
+            Text(
+              'Bonus Page',
+              style: blackTextStyle.copyWith(
+                fontSize: 32,
+                fontWeight: semiBold
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 18,
+            ),
+            Text(
+              'We give you early credit so that\nyou can buy a flight ticket',
+              style: greyTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: light,
+              ),
+              textAlign: TextAlign.center,
+            )
+          ],
+        )
+      );
+    }
+
+    Widget tacButton() {
+      return Container(
+        margin: const EdgeInsets.only(top: 50),
+        width: 220,
+        height: 55,
+        child: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            backgroundColor: kPrimaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(defaultRadius)
+            )
+          ),
+          child: Text(
+            'Start Fly Now',
+            style: whiteTextStyle.copyWith(
+              color: kWhiteColor,
+              fontWeight: medium,
+              fontSize: 18
+            ),
+          ),
         ),
       );
     }
@@ -74,7 +157,9 @@ class BonuScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            bonusCard()
+            bonusCard(),
+            title(),
+            tacButton()
           ],
         ),
       ),
