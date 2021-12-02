@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/ui/widget/custom_button.dart';
 import '../../shared/theme.dart';
 
 class GetStartedScreen extends StatelessWidget {
@@ -40,29 +41,12 @@ class GetStartedScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Container(
-                  width: 220,
-                  height: 55,
-                  margin: const EdgeInsets.only(top: 50, bottom: 50),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/sign-up');
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: kPrimaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(defaultRadius)
-                      )
-                    ),
-                    child: Text(
-                      'Get Started',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 18,
-                        fontWeight: medium
-                      )
-                    )
-                  )
-                )
+                CustomButton(
+                  title: 'Get Started',
+                  onPress: () {
+                    Navigator.pushNamed(context, '/sign-up');
+                    }, 
+                  ),
               ],
             ),
           )
