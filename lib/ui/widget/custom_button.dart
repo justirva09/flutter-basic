@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/shared/theme.dart';
 
+/// add width, height, color, fontSize, bgColor, radius
 class CustomButton extends StatelessWidget {
   final String title;
   final VoidCallback onPress;
-  const CustomButton({ Key? key, required this.title, required this.onPress}) : super(key: key);
+  const CustomButton({ 
+    Key? key, 
+    required this.title, //props button title
+    required this.onPress //props button onPress
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

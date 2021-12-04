@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/shared/theme.dart';
+import 'package:my_app/ui/screen/home_screen.dart';
 import 'package:my_app/ui/widget/navigation_item.dart';
 
 class MainScreen extends StatelessWidget {
@@ -7,6 +8,10 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Widget BuildContent() {
+      return HomeScreen();
+    }
 
     Widget bottomNavigation() {
       return Align(
@@ -38,7 +43,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Text('Main Screen'),
+          BuildContent(),
           bottomNavigation()
         ],
       )
