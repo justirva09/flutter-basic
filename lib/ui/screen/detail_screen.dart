@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/shared/theme.dart';
+import 'package:my_app/ui/widget/custom_button.dart';
+import 'package:my_app/ui/widget/interest_item.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
@@ -9,9 +11,11 @@ class DetailScreen extends StatelessWidget {
       width: double.infinity,
       height: 450,
       decoration: const BoxDecoration(
-          image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/image_destination1.png'))),
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage('assets/image_destination1.png'),
+        ),
+      ),
     );
   }
 
@@ -21,10 +25,12 @@ class DetailScreen extends StatelessWidget {
       height: 214,
       margin: const EdgeInsets.only(top: 236),
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [
-        kWhiteColor.withOpacity(0),
-        Colors.black.withOpacity(0.95)
-      ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+        gradient: LinearGradient(
+          colors: [kWhiteColor.withOpacity(0), Colors.black.withOpacity(0.95)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
     );
   }
 
@@ -38,6 +44,20 @@ class DetailScreen extends StatelessWidget {
         image: DecorationImage(
           fit: BoxFit.cover,
           image: AssetImage(image),
+        ),
+      ),
+    );
+  }
+
+  Widget headingTitle(String title) {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: 6,
+      ),
+      child: Text(
+        title,
+        style: blackTextStyle.copyWith(
+          fontWeight: semiBold,
         ),
       ),
     );
@@ -117,15 +137,7 @@ class DetailScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'About',
-                  style: blackTextStyle.copyWith(
-                    fontWeight: semiBold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
+                headingTitle('About'),
                 Text(
                   'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
                   style: blackTextStyle.copyWith(height: 2),
@@ -133,22 +145,65 @@ class DetailScreen extends StatelessWidget {
                   maxLines: 4, // give a max value for elipsis line
                 ),
                 // NOTE PHOTOS
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  'Photos',
-                  style: blackTextStyle.copyWith(
-                    fontWeight: semiBold,
-                  ),
-                ),
+                headingTitle('Photos'),
                 Row(
                   children: [
                     contentDestinationPhotos('assets/image_destination1.png'),
                     contentDestinationPhotos('assets/image_destination2.png'),
                     contentDestinationPhotos('assets/image_destination3.png'),
                   ],
-                )
+                ),
+                headingTitle('Interest'),
+                Row(
+                  children: const [
+                    InterestsWidget(title: 'Kids Park'),
+                    InterestsWidget(title: 'City Museum'),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: const [
+                    InterestsWidget(title: 'Playground'),
+                    InterestsWidget(title: 'Waterboom'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          // NOTE: PRICE & BOOK BUTTON
+          Container(
+            width: double.infinity,
+            margin: const EdgeInsets.symmetric(
+              vertical: 20,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'IDR 2.500.000',
+                        style: blackTextStyle.copyWith(
+                          fontWeight: medium,
+                          fontSize: 18,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        'per Orang',
+                        style: greyTextStyle.copyWith(
+                          fontWeight: light,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                CustomButton(title: 'Book Now', onPress: () {}, width: 170)
               ],
             ),
           )
@@ -160,9 +215,16 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kBackgroundColor,
-        body: Stack(
-          children: [backgroundImage(), shadowBottom(), content()],
-        ));
+      backgroundColor: kBackgroundColor,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            backgroundImage(),
+            shadowBottom(),
+            content(),
+          ],
+        ),
+      ),
+    );
   }
 }
