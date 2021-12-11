@@ -88,7 +88,8 @@ class HomeScreen extends StatelessWidget {
     Widget newDestinationWrapper() {
       return Container(
         margin: const EdgeInsets.only(
-          top: 30
+          top: 30,
+          bottom: 140
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,7 +138,7 @@ class HomeScreen extends StatelessWidget {
       margin: EdgeInsets.only(
         top: 30,
         left: defaultMargin,
-        right: defaultMargin
+        right: defaultMargin,
       ),
       child: ListView(
         children: [
